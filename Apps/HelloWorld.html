@@ -104,10 +104,14 @@ neighborhoodsPromise.then(function(dataSource) {
 
         if (Cesium.defined(entity.billboard)) {
             //entity.billboard.show = false;
-			//var billboard = new Cesium.DynamicBillboard();
-			//billboard.image = new Cesium.ConstantProperty('Rock.01.glb');
-			//defaultPoint.billboard = billboard;
-			entity.billboard.image = new Cesium.ConstantProperty('Rock.01.glb');
+	    //var billboard = new Cesium.DynamicBillboard();
+	    //billboard.image = new Cesium.ConstantProperty('Rock.01.glb');
+	    //defaultPoint.billboard = billboard;
+	    //entity.billboard.image = new Cesium.ConstantProperty('Rock.01.glb');
+	    entity.billboard.image = 'meteor.png';
+	    if (Cesium.defined(entity.properties.mass._value)) {
+	       entity.billboard.scale = Math.log10(parseInt(entity.properties.mass._value)) / 6;
+	    }
         }
     }
 });
